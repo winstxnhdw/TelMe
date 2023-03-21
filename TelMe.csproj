@@ -21,7 +21,6 @@
     <RemoveDir Directories="$(PublishDir)" />
   </Target>
 
-
   <ItemGroup>
 
     <EmbeddedResource Include="appsettings.json" />
