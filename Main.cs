@@ -26,9 +26,9 @@ if (args is { Length: 1 }) {
     else if (args[0] is "uninstall") {
         Console.WriteLine("Uinstalling TelMe..");
 
-        _ = serviceControlManager.WithArguments(new[] { "stop", ServiceName })
-                                 .WithValidation(CommandResultValidation.None)
-                                 .ExecuteAsync();
+        _ = await serviceControlManager.WithArguments(new[] { "stop", ServiceName })
+                                       .WithValidation(CommandResultValidation.None)
+                                       .ExecuteAsync();
 
         _ = await serviceControlManager.WithArguments(new[] { "delete", ServiceName })
                                        .ExecuteAsync();
