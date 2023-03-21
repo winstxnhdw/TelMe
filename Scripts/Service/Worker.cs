@@ -15,28 +15,28 @@ public class Worker : BackgroundService, IDisposable {
 
     public Worker(TelMeService service, ILogger<Worker> logger) {
         this.LogMessage = LoggerMessage.Define<string>(
-            LogLevel.Information,
-            0,
-            "{Message}"
+            LogLevel.Information, 0, "{Message}"
         );
 
         this.LogError = LoggerMessage.Define<string>(
-            LogLevel.Error,
-            0,
-            "{Message}"
+            LogLevel.Error, 0, "{Message}"
         );
 
         this.Logger = logger;
         this.Service = service;
     }
 
+    async Task ExecuteService(CancellationToken stoppingToken) {
+        while (!stoppingToken.IsCancellationRequested) {
+            this.LogMessage(this.Logger, $"Worker running at: {DateTimeOffset.Now}", null);
+            _ = await this.Service.NotifyStartup(DateTimeOffset.Now);
+            this.Exit();
+        }
+    }
+
     protected override async Task ExecuteAsync(CancellationToken stoppingToken) {
         try {
-            while (!stoppingToken.IsCancellationRequested) {
-                this.LogMessage(this.Logger, $"Worker running at: {DateTimeOffset.Now}", null);
-                _ = await this.Service.NotifyStartup(DateTimeOffset.Now);
-                this.Exit();
-            }
+            await this.ExecuteService(stoppingToken);
         }
 
         catch (TaskCanceledException exception) {
@@ -45,6 +45,9 @@ public class Worker : BackgroundService, IDisposable {
 
         catch (Exception exception) {
             this.LogError(this.Logger, $"Worker failed at: {DateTimeOffset.Now}", exception);
+        }
+
+        finally {
             this.Exit();
         }
     }

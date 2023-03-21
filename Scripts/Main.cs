@@ -10,12 +10,13 @@ using Microsoft.Extensions.Logging.EventLog;
 using TelMe;
 
 
+const string ServiceName = "TelMe";
+
 if (args is { Length: 1 }) {
-    const string ServiceName = "TelMe";
     Command serviceControlManager = Cli.Wrap("sc");
 
     if (args[0] is "install") {
-        Console.WriteLine("Installing TelMe..");
+        Console.WriteLine($"Installing {ServiceName}..");
 
         _ = await serviceControlManager.WithArguments(new[] { "create", ServiceName, $"binPath={Directory.GetCurrentDirectory()}\\{ServiceName}.exe", "start=auto" })
                                        .ExecuteAsync();
@@ -25,7 +26,7 @@ if (args is { Length: 1 }) {
     }
 
     else if (args[0] is "uninstall") {
-        Console.WriteLine("Uinstalling TelMe..");
+        Console.WriteLine($"Uinstalling {ServiceName}..");
 
         _ = await serviceControlManager.WithArguments(new[] { "stop", ServiceName })
                                        .WithValidation(CommandResultValidation.None)
@@ -39,13 +40,12 @@ if (args is { Length: 1 }) {
 }
 
 HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
-
 IServiceCollection services = builder.Services;
 
-services.AddWindowsService(options => options.ServiceName = "TelMe")
-        .AddSingleton<ConfigLoader>()
+services.AddWindowsService(options => options.ServiceName = ServiceName)
         .AddSingleton<TelMeService>()
         .AddHostedService<Worker>();
+
 builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
 LoggerProviderOptions.RegisterProviderOptions<EventLogSettings, EventLogLoggerProvider>(services);
 
