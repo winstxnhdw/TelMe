@@ -1,4 +1,6 @@
+.config/
+.vscode/
 bin/
 obj/
-dist/
+TelMe/
 appsettings.json

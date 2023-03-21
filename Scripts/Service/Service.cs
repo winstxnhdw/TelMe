@@ -5,7 +5,6 @@ using Amazon;
 using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
 using Microsoft.Extensions.Configuration;
-using TelMe.Config;
 
 namespace TelMe;
 

@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using CliWrap;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -38,12 +39,13 @@ if (args is { Length: 1 }) {
 }
 
 HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
+
 IServiceCollection services = builder.Services;
 
 services.AddWindowsService(options => options.ServiceName = "TelMe")
+        .AddSingleton<ConfigLoader>()
         .AddSingleton<TelMeService>()
         .AddHostedService<Worker>();
-
 builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
 LoggerProviderOptions.RegisterProviderOptions<EventLogSettings, EventLogLoggerProvider>(services);
 

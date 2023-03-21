@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace TelMe;
 
-public class Worker : BackgroundService {
+public class Worker : BackgroundService, IDisposable {
     TelMeService Service { get; }
     ILogger<Worker> Logger { get; }
 
@@ -35,7 +35,7 @@ public class Worker : BackgroundService {
             while (!stoppingToken.IsCancellationRequested) {
                 this.LogMessage(this.Logger, $"Worker running at: {DateTimeOffset.Now}", null);
                 _ = await this.Service.NotifyStartup(DateTimeOffset.Now);
-                Environment.Exit(1);
+                this.Exit();
             }
         }
 
@@ -45,7 +45,13 @@ public class Worker : BackgroundService {
 
         catch (Exception exception) {
             this.LogError(this.Logger, $"Worker failed at: {DateTimeOffset.Now}", exception);
-            Environment.Exit(1);
+            this.Exit();
         }
+    }
+
+    void Exit() {
+        this.Service.Dispose();
+        this.Dispose();
+        Environment.Exit(1);
     }
 }
