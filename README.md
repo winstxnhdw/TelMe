@@ -19,7 +19,7 @@ echo
   "AWS_ACCESS_KEY_ID": "<aws-access-key-id>",
   "AWS_SECRET_ACCESS_KEY": "<aws-secret-access-key>",
   "VERIFY_EMAIL": true
-}" >> appsettings.json
+}" > appsettings.json
 ```
 
 Verify your email address by running the program once. Read more [here](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#verify-email-addresses-procedure).
