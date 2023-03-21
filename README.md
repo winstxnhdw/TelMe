@@ -11,15 +11,14 @@
 Populate the `appsettings.json` file in the root of the directory.
 
 ```bash
-echo
-"
+echo '
 {
   "EMAIL_FROM": "<sender-email-address>",
   "EMAIL_TO": "<recipient-email-address>",
   "AWS_ACCESS_KEY_ID": "<aws-access-key-id>",
   "AWS_SECRET_ACCESS_KEY": "<aws-secret-access-key>",
   "VERIFY_EMAIL": true
-}" > appsettings.json
+}' > appsettings.json
 ```
 
 Verify your email address by running the program once. Read more [here](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#verify-email-addresses-procedure).
@@ -52,4 +51,18 @@ You may remove the service permanently by running the following.
 
 ```ps1
 C:\Program Files\TelMe\TelMe.exe uninstall
+```
+
+## Development
+
+Start the service.
+
+```ps1
+sc.exe start TelMe
+```
+
+Remove the service.
+
+```ps1
+sc.exe delete TelMe
 ```
