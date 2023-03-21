@@ -35,8 +35,8 @@ dotnet publish -c Release
 
 Move the `PublishDir` directory to `C:\Program Files\TelMe`.
 
-```bash
-mv TelMe C:/Program Files/TelMe
+```ps1
+mv TelMe C:\Program Files\TelMe
 ```
 
 Install the service.
