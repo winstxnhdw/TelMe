@@ -2,5 +2,7 @@
 .vscode/
 bin/
 obj/
-TelMe/
+dist/
+NuGet/
 appsettings.json
+nuget.config

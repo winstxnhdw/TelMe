@@ -2,7 +2,8 @@
 
   <PropertyGroup>
 
-    <PublishDir>TelMe</PublishDir>
+    <Configuration Condition=" '$(Configuration)' == 'Debug' ">Release</Configuration>
+    <PublishDir>../bin</PublishDir>
     <OutputType>exe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
@@ -21,14 +22,18 @@
     <RemoveDir Directories="$(PublishDir)" />
   </Target>
 
-  <ItemGroup>
+  <Target Name="CreateInstaller" AfterTargets="Publish">
+    <Exec Command="&quot;$(InnoSetupCompiler)&quot; setup.iss" />
+  </Target>
 
-    <EmbeddedResource Include="appsettings.json" />
+  <ItemGroup>
 
     <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.100.95" />
     <PackageReference Include="CliWrap" Version="3.6.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="7.0.0" />
+    <PackageReference Include="Tools.InnoSetup" Version="6.2.2" />
 
   </ItemGroup>
 

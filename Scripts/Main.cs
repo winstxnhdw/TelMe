@@ -1,3 +1,5 @@
+#pragma warning disable CA1852
+
 using System;
 using System.IO;
 using CliWrap;
@@ -26,7 +28,7 @@ if (args is { Length: 1 }) {
     }
 
     else if (args[0] is "uninstall") {
-        Console.WriteLine($"Uinstalling {ServiceName}..");
+        Console.WriteLine($"Uninstalling {ServiceName}..");
 
         _ = await serviceControlManager.WithArguments(new[] { "stop", ServiceName })
                                        .WithValidation(CommandResultValidation.None)

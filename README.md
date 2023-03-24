@@ -30,7 +30,7 @@ dotnet run
 Set the `VERIFY_EMAIL` property to `false` in the `appsettings.json` file and publish the application.
 
 ```ps1
-dotnet publish -c Release
+dotnet publish
 ```
 
 Move the `PublishDir` directory to `C:\Program Files\TelMe`.
