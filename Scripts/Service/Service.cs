@@ -7,7 +7,7 @@ namespace TelMe;
 public sealed class TelMeService {
     Config Config { get; }
 
-    TelMeService() {
+    public TelMeService() {
         this.Config = new Config();
     }
 

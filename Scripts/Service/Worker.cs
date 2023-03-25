@@ -13,7 +13,7 @@ public class Worker : BackgroundService {
     Action<ILogger, string, Exception> LogMessage { get; }
     Action<ILogger, string, Exception> LogError { get; }
 
-    Worker(TelMeService service, ILogger<Worker> logger) {
+    public Worker(TelMeService service, ILogger<Worker> logger) {
         this.LogMessage = LoggerMessage.Define<string>(
             LogLevel.Information, 0, "{Message}"
         );
