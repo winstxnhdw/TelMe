@@ -6,14 +6,14 @@ using Microsoft.Extensions.Logging;
 
 namespace TelMe;
 
-public class Worker : BackgroundService, IDisposable {
+public class Worker : BackgroundService {
     TelMeService Service { get; }
     ILogger<Worker> Logger { get; }
 
     Action<ILogger, string, Exception> LogMessage { get; }
     Action<ILogger, string, Exception> LogError { get; }
 
-    public Worker(TelMeService service, ILogger<Worker> logger) {
+    Worker(TelMeService service, ILogger<Worker> logger) {
         this.LogMessage = LoggerMessage.Define<string>(
             LogLevel.Information, 0, "{Message}"
         );
@@ -53,7 +53,6 @@ public class Worker : BackgroundService, IDisposable {
     }
 
     void Exit() {
-        this.Service.Dispose();
         this.Dispose();
         Environment.Exit(1);
     }
