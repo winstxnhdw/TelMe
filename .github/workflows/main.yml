@@ -26,13 +26,13 @@ jobs:
       - name: Publish
         run: dotnet publish
 
-    - name: Release PDF(s)
-      env:
-        GH_TOKEN: ${{ github.token }}
-        RELEASE_TAG: latest
-        RELEASE_TITLE: TelMe Installer
-        RELEASE_ASSET: dist/Setup.exe
-      run: |
-        gh release delete ${{ env.RELEASE_TAG }} -y || true
-        gh release create ${{ env.RELEASE_TAG }} -t '${{ env.RELEASE_TITLE }}' || true
-        gh release upload ${{ env.RELEASE_TAG }} ${{ env.RELEASE_ASSET }} --clobber
+      - name: Release Installer
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: latest
+          RELEASE_TITLE: TelMe Installer
+          RELEASE_ASSET: dist/Setup.exe
+        run: |
+          gh release delete ${{ env.RELEASE_TAG }} -y || true
+          gh release create ${{ env.RELEASE_TAG }} -t '${{ env.RELEASE_TITLE }}' || true
+          gh release upload ${{ env.RELEASE_TAG }} ${{ env.RELEASE_ASSET }} --clobber
