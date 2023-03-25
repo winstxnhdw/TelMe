@@ -4,5 +4,4 @@ bin/
 obj/
 dist/
 NuGet/
-appsettings.json
 nuget.config
