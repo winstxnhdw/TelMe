@@ -3,8 +3,8 @@ name: Deploy
 on:
   push:
     paths:
-      - '*.cs'
-      - '*.csproj'
+      - '**/*.cs'
+      - '**/*.csproj'
       - '.github/workflows/main.yml'
 
 jobs:
