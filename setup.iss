@@ -14,12 +14,12 @@ AppSupportURL={#URL}
 AppUpdatesURL={#URL}
 DefaultDirName={commonpf}\{#Name}
 OutputBaseFilename=Setup
-OutputDir={src}\..\..\dist
+OutputDir=dist
 Compression=lzma
 SolidCompression=yes
 
 [Files]
-Source: "..\bin\TelMe.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "dist\TelMe.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 [InstallDelete]
 Type: filesandordirs; Name: "{app}"
