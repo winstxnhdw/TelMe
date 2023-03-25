@@ -30,10 +30,10 @@ Filename: "{app}\settings.ini"; Section: "User"; Key: "EMAIL_FROM"; String: ""
 Filename: "{app}\settings.ini"; Section: "User"; Key: "SERVER_ENDPOINT"; String: ""
 
 [Run]
-Filename: "{app}\TelMe.exe"; Parameters: "install"; Flags: runhidden
+Filename: "{app}\TelMe.exe"; Parameters: "install"; Flags: runhidden postinstall runascurrentuser
 
 [UninstallRun]
-Filename: "{app}\TelMe.exe"; Parameters: "uninstall"; Flags: runhidden; RunOnceId: "TelMeUninstall"
+Filename: "{app}\TelMe.exe"; Parameters: "uninstall"; Flags: runhidden runascurrentuser; RunOnceId: "TelMeUninstall"
 
 [Code]
 var
