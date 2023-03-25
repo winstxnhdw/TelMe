@@ -20,7 +20,7 @@ if (args is { Length: 1 }) {
     if (args[0] is "install") {
         Console.WriteLine($"Installing {ServiceName}..");
 
-        _ = await serviceControlManager.WithArguments(new[] { "create", ServiceName, $"binPath={Directory.GetCurrentDirectory()}\\{ServiceName}.exe", "start=auto" })
+        _ = await serviceControlManager.WithArguments(new[] { "create", ServiceName, $"binPath={Directory.GetCurrentDirectory()}\\{ServiceName}.exe", "start=delayed-auto" })
                                        .ExecuteAsync();
 
         _ = await serviceControlManager.WithArguments(new[] { "start", ServiceName })
