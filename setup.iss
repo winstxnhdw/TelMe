@@ -7,7 +7,7 @@
 Uninstallable=yes
 AppId={{79A7BABF-E66D-4F8C-8FAD-BB11214DCEA6}}
 AppName={#Name}
-AppVerName={#Version}
+AppVerName={#Name} {#Version}
 AppPublisher={#Publisher}
 AppPublisherURL={#URL}
 AppSupportURL={#URL}
