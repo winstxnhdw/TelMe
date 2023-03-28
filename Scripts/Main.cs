@@ -2,6 +2,7 @@
 
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using CliWrap;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,45 +12,55 @@ using Microsoft.Extensions.Logging.Configuration;
 using Microsoft.Extensions.Logging.EventLog;
 using TelMe;
 
+async Task<bool> ParseArgs(string serviceName) {
+    if (args is not { Length: 1 }) return false;
 
-const string ServiceName = "TelMe";
-
-if (args is { Length: 1 }) {
     Command serviceControlManager = Cli.Wrap("sc");
 
     if (args[0] is "install") {
-        Console.WriteLine($"Installing {ServiceName}..");
+        Console.WriteLine($"Installing {serviceName}..");
 
-        _ = await serviceControlManager.WithArguments(new[] { "create", ServiceName, $"binPath={Directory.GetCurrentDirectory()}\\{ServiceName}.exe", "start=delayed-auto" })
+        _ = await serviceControlManager.WithArguments(new[] { "create", serviceName, $"binPath={Directory.GetCurrentDirectory()}\\{serviceName}.exe", "start=delayed-auto" })
                                        .ExecuteAsync();
 
-        _ = await serviceControlManager.WithArguments(new[] { "start", ServiceName })
+        _ = await serviceControlManager.WithArguments(new[] { "start", serviceName })
                                        .ExecuteAsync();
     }
 
     else if (args[0] is "uninstall") {
-        Console.WriteLine($"Uninstalling {ServiceName}..");
+        Console.WriteLine($"Uninstalling {serviceName}..");
 
-        _ = await serviceControlManager.WithArguments(new[] { "stop", ServiceName })
+        _ = await serviceControlManager.WithArguments(new[] { "stop", serviceName })
                                        .WithValidation(CommandResultValidation.None)
                                        .ExecuteAsync();
 
-        _ = await serviceControlManager.WithArguments(new[] { "delete", ServiceName })
+        _ = await serviceControlManager.WithArguments(new[] { "delete", serviceName })
                                        .ExecuteAsync();
     }
 
-    return;
+    else {
+        Console.WriteLine("Invalid argument.");
+    }
+
+    return true;
 }
 
-HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
-IServiceCollection services = builder.Services;
+async Task Main() {
+    const string ServiceName = "TelMe";
+    if (await ParseArgs(ServiceName)) return;
 
-services.AddWindowsService(options => options.ServiceName = ServiceName)
-        .AddSingleton<TelMeService>()
-        .AddHostedService<Worker>();
+    HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
+    IServiceCollection services = builder.Services;
+    _ = builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
 
-builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
-LoggerProviderOptions.RegisterProviderOptions<EventLogSettings, EventLogLoggerProvider>(services);
+    _ = services.AddWindowsService(options => options.ServiceName = ServiceName)
+                .AddSingleton<TelMeService>()
+                .AddHostedService<Worker>();
 
-builder.Build()
-       .Run();
+    LoggerProviderOptions.RegisterProviderOptions<EventLogSettings, EventLogLoggerProvider>(services);
+
+    builder.Build()
+           .Run();
+}
+
+await Main();
