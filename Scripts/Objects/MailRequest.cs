@@ -1,17 +1,19 @@
-using Newtonsoft.Json;
-
 namespace TelMe;
 
-public struct MailRequest {
-    [JsonProperty("to")]
-    public string[] To { get; set; }
+public readonly struct MailRequest {
+    public string[] To { get; }
+    public string From { get; }
+    public string Subject { get; }
+    public string Html { get; }
 
-    [JsonProperty("from")]
-    public string From { get; set; }
+    public MailRequest(string[] to, string from, string subject, string body) {
+        this.To = to;
+        this.From = from;
+        this.Subject = subject;
+        this.Html = body;
+    }
 
-    [JsonProperty("subject")]
-    public string Subject { get; set; }
+    public MailRequest(string to, string from, string subject, string body) : this(new[] { to }, from, subject, body) { }
 
-    [JsonProperty("html")]
-    public string Body { get; set; }
+    public override string ToString() => JSON.Parse(this, true);
 }

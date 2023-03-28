@@ -3,7 +3,6 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace TelMe;
 
@@ -14,6 +13,8 @@ public class Requests : IDisposable {
         this.HttpClient = new HttpClient();
     }
 
+    static StringContent SerialiseJSON<T>(T payload) => new(JSON.Parse(payload), Encoding.UTF8, "application/json");
+
     public async Task<HttpStatusCode> Post<T>(string endpoint, T payload) {
         using HttpResponseMessage request = await this.HttpClient.PostAsync(endpoint, Requests.SerialiseJSON(payload));
         return request.StatusCode;
@@ -23,6 +24,4 @@ public class Requests : IDisposable {
         this.HttpClient.Dispose();
         GC.SuppressFinalize(this);
     }
-
-    static StringContent SerialiseJSON<T>(T payload) => new(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
 }
