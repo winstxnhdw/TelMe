@@ -28,8 +28,9 @@ public class Worker : BackgroundService {
 
     async Task ExecuteService(CancellationToken stoppingToken) {
         while (!stoppingToken.IsCancellationRequested) {
-            this.LogMessage(this.Logger, $"Worker running at: {DateTimeOffset.Now}", null);
-            _ = await this.Service.NotifyStartup(DateTimeOffset.Now);
+            DateTimeOffset now = DateTimeOffset.Now;
+            this.LogMessage(this.Logger, $"Worker running at: {now}", null);
+            _ = await this.Service.NotifyStartup(now);
             this.Exit();
         }
     }
