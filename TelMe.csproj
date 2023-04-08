@@ -27,7 +27,7 @@
 
   <ItemGroup>
 
-    <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.100.95" />
+    <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.100.108" />
     <PackageReference Include="CliWrap" Version="3.6.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
