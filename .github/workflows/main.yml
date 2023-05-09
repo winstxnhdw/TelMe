@@ -5,7 +5,7 @@ on:
     paths:
       - '**/*.cs'
       - '**/*.csproj'
-      - '.github/workflows/main.yml'
+      - .github/workflows/main.yml
 
 permissions:
   contents: write
