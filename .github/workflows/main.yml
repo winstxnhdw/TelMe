@@ -3,10 +3,10 @@ name: Deploy
 on:
   push:
     paths:
+      - .github/workflows/main.yml
       - Scripts/**
       - TelMe.csproj
       - setup.iss
-      - .github/workflows/main.yml
 
 permissions:
   contents: write
@@ -27,13 +27,17 @@ jobs:
       - name: Publish
         run: dotnet publish
 
-      - name: Release Installer
-        env:
-          GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: latest
-          RELEASE_TITLE: TelMe Installer
-          RELEASE_ASSET: dist/Setup.exe
-        run: |
-          gh release delete ${{ env.RELEASE_TAG }} -y || true
-          gh release create ${{ env.RELEASE_TAG }} -t '${{ env.RELEASE_TITLE }}' || true
-          gh release upload ${{ env.RELEASE_TAG }} ${{ env.RELEASE_ASSET }} --clobber
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: dist/
+
+  release:
+    uses: winstxnhdw/actions/.github/workflows/release.yml@main
+    with:
+      release-tag: latest
+      release-title: TelMe Installer
+      release-asset: dist/Setup.exe
+      artifact-name: build
+      artifact-path: dist/
