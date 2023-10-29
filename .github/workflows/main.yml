@@ -1,4 +1,4 @@
-name: Deploy
+name: Release
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 jobs:
-  deploy:
+  build:
     runs-on: windows-latest
 
     steps:
@@ -31,9 +31,10 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build
-          path: dist/
+          path: dist/Setup.exe
 
   release:
+    needs: build
     uses: winstxnhdw/actions/.github/workflows/release.yml@main
     with:
       release-tag: latest
