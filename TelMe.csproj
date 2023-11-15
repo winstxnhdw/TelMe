@@ -8,6 +8,7 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PlatformTarget>x64</PlatformTarget>
+    <PublishAot>true</PublishAot>
     <PublishSingleFile>true</PublishSingleFile>
     <PublishReadyToRun>true</PublishReadyToRun>
     <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
