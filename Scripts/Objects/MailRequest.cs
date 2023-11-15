@@ -1,19 +1,22 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace TelMe;
 
 public readonly struct MailRequest {
-    public string[] To { get; }
-    public string From { get; }
-    public string Subject { get; }
-    public string Html { get; }
-
-    public MailRequest(string[] to, string from, string subject, string body) {
-        this.To = to;
-        this.From = from;
-        this.Subject = subject;
-        this.Html = body;
-    }
-
-    public MailRequest(string to, string from, string subject, string body) : this(new[] { to }, from, subject, body) { }
+    public string[] To { get; init; }
+    public string From { get; init; }
+    public string Subject { get; init; }
+    public string Html { get; init; }
 
     public override string ToString() => JSON.Parse(this, true);
+}
+
+[JsonSerializable(typeof(MailRequest))]
+public partial class MailRequestContext : JsonSerializerContext { }
+
+public partial class JSON {
+    public static string Parse(MailRequest payload) {
+        return JsonSerializer.Serialize(payload, MailRequestContext.Default.MailRequest);
+    }
 }
