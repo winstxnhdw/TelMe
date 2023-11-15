@@ -7,7 +7,7 @@
 
 ## Requirements
 
-- [.NET Core 7.0 SDK or later](https://dotnet.microsoft.com/en-us/download)
+- [.NET Core 8.0 SDK or later](https://dotnet.microsoft.com/en-us/download)
 
 ## Development
 
