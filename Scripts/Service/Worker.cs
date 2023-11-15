@@ -26,17 +26,15 @@ public class Worker : BackgroundService {
         this.Service = service;
     }
 
-    async Task ExecuteService(CancellationToken stoppingToken) {
-        while (!stoppingToken.IsCancellationRequested) {
-            DateTimeOffset now = DateTimeOffset.Now;
-            this.LogMessage(this.Logger, $"Worker running at: {now}", null);
-            _ = await this.Service.NotifyStartup(now);
-        }
+    async Task ExecuteService() {
+        DateTimeOffset now = DateTimeOffset.Now;
+        this.LogMessage(this.Logger, $"Worker running at: {now}", null);
+        _ = await this.Service.NotifyStartup(now);
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken) {
         try {
-            await this.ExecuteService(stoppingToken);
+            await this.ExecuteService();
         }
 
         catch (TaskCanceledException exception) {
