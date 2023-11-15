@@ -31,7 +31,6 @@ public class Worker : BackgroundService {
             DateTimeOffset now = DateTimeOffset.Now;
             this.LogMessage(this.Logger, $"Worker running at: {now}", null);
             _ = await this.Service.NotifyStartup(now);
-            this.Exit();
         }
     }
 
@@ -55,6 +54,6 @@ public class Worker : BackgroundService {
 
     void Exit() {
         this.Dispose();
-        Environment.Exit(1);
+        Environment.Exit(0);
     }
 }
