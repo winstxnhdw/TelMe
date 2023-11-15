@@ -45,7 +45,11 @@ async Task<bool> ParseArgs(string serviceName) {
 
 async Task Main() {
     const string ServiceName = "TelMe";
-    if (await ParseArgs(ServiceName)) return;
+    bool isRunningInstaller = await ParseArgs(ServiceName);
+
+    if (isRunningInstaller) {
+        return;
+    }
 
     HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
     IServiceCollection services = builder.Services;
