@@ -1,5 +1,3 @@
-#pragma warning disable CA1852
-
 using System;
 using System.IO;
 using System.Threading.Tasks;
