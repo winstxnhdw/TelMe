@@ -6,45 +6,37 @@ using Microsoft.Extensions.Logging;
 
 namespace TelMe;
 
-public class Worker(TelMeService service, ILogger<Worker> logger) : BackgroundService
-{
+public class Worker(TelMeService service, ILogger<Worker> logger) : BackgroundService {
     TelMeService Service { get; } = service;
     ILogger<Worker> Logger { get; } = logger;
     Action<ILogger, string, Exception> LogMessage { get; } = LoggerMessage.Define<string>(LogLevel.Information, 0, "{Message}");
     Action<ILogger, string, Exception> LogError { get; } = LoggerMessage.Define<string>(LogLevel.Error, 0, "{Message}");
 
-    async Task ExecuteService()
-    {
+    async Task ExecuteService() {
         DateTimeOffset now = DateTimeOffset.Now;
         this.LogMessage(this.Logger, $"Worker running at: {now}", null);
         _ = await this.Service.NotifyStartup(now);
     }
 
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-    {
-        try
-        {
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken) {
+        try {
             await this.ExecuteService();
         }
 
-        catch (TaskCanceledException exception)
-        {
+        catch (TaskCanceledException exception) {
             this.LogMessage(this.Logger, $"Worker cancelled at: {DateTimeOffset.Now}", exception);
         }
 
-        catch (Exception exception)
-        {
+        catch (Exception exception) {
             this.LogError(this.Logger, $"Worker failed at: {DateTimeOffset.Now}", exception);
         }
 
-        finally
-        {
+        finally {
             this.Exit();
         }
     }
 
-    void Exit()
-    {
+    void Exit() {
         this.Dispose();
         Environment.Exit(0);
     }
