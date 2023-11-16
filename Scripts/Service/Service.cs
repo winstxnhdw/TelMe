@@ -17,7 +17,7 @@ public sealed class TelMeService {
         string localTime = startupTime.ToLocalTime().ToString(TimeFormat);
 
         MailRequest mailRequest = new() {
-            To = new[] { this.Config.GetValue<string>("EMAIL_TO") },
+            To = [this.Config.GetValue<string>("EMAIL_TO")],
             From = this.Config.GetValue<string>("EMAIL_FROM"),
             Subject = "TelMe has started!",
             Html = $"TelMe has started at {localTime} ({singaporeTime} SGT)"
