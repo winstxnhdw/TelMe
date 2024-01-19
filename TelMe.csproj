@@ -11,6 +11,7 @@
     <PublishSingleFile>true</PublishSingleFile>
     <PublishReadyToRun>true</PublishReadyToRun>
     <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
 
   </PropertyGroup>
 
