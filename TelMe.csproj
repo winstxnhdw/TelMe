@@ -2,9 +2,10 @@
 
   <PropertyGroup>
 
-    <Configuration Condition=" '$(Configuration)' == 'Debug' ">Release</Configuration>
     <PublishDir>dist</PublishDir>
     <OutputType>exe</OutputType>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
     <TargetFramework>net8.0-windows</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PlatformTarget>x64</PlatformTarget>

@@ -11,28 +11,28 @@ using Microsoft.Extensions.Logging.EventLog;
 using TelMe;
 
 async Task<bool> ParseArgs(string serviceName) {
-    if (args is not { Length: 1 }) return false;
+    if (args.Length is not 1) return false;
 
     Command serviceControlManager = Cli.Wrap("sc");
 
     if (args[0] is "install") {
         Console.WriteLine($"Installing {serviceName}..");
 
-        _ = await serviceControlManager.WithArguments(new[] { "create", serviceName, $"binPath={Directory.GetCurrentDirectory()}\\{serviceName}.exe", "start=delayed-auto" })
+        _ = await serviceControlManager.WithArguments(["create", serviceName, $"binPath={Directory.GetCurrentDirectory()}\\{serviceName}.exe", "start=delayed-auto"])
                                        .ExecuteAsync();
 
-        _ = await serviceControlManager.WithArguments(new[] { "start", serviceName })
+        _ = await serviceControlManager.WithArguments(["start", serviceName])
                                        .ExecuteAsync();
     }
 
     else if (args[0] is "uninstall") {
         Console.WriteLine($"Uninstalling {serviceName}..");
 
-        _ = await serviceControlManager.WithArguments(new[] { "stop", serviceName })
+        _ = await serviceControlManager.WithArguments(["stop", serviceName])
                                        .WithValidation(CommandResultValidation.None)
                                        .ExecuteAsync();
 
-        _ = await serviceControlManager.WithArguments(new[] { "delete", serviceName })
+        _ = await serviceControlManager.WithArguments(["delete", serviceName])
                                        .ExecuteAsync();
     }
 
