@@ -1,10 +1,10 @@
 namespace TelMe;
 
-public readonly struct MailRequest {
-    public string[] To { get; init; }
-    public string From { get; init; }
-    public string Subject { get; init; }
-    public string Html { get; init; }
+readonly record struct MailRequest {
+    internal required string[] To { get; init; }
+    internal required string From { get; init; }
+    internal required string Subject { get; init; }
+    internal required string Html { get; init; }
 
     public override string ToString() => JSON.Parse(this, true);
 }

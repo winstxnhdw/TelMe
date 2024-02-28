@@ -2,19 +2,12 @@ using System;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 
-namespace TelMe;
+class Config {
+    IConfigurationRoot ConfigRoot { get; } = Config.Load();
 
-public class Config {
-    IConfigurationRoot ConfigRoot { get; }
-
-    public Config() {
-        this.ConfigRoot = Config.Load();
-    }
-
-    public T? GetValue<T>(string key) => this.ConfigRoot.GetValue<T>($"User:{key}");
+    internal T? GetValue<T>(string key) => this.ConfigRoot.GetValue<T>($"User:{key}");
 
     static IConfigurationRoot Load() =>
         new ConfigurationBuilder().AddIniFile($"{Path.GetDirectoryName(Environment.ProcessPath)}/settings.ini")
                                   .Build();
-
 }

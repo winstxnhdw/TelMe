@@ -3,10 +3,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TelMe;
 
-namespace TelMe;
-
-public class Worker(TelMeService service, ILogger<Worker> logger) : BackgroundService {
+class Worker(TelMeService service, ILogger<Worker> logger) : BackgroundService {
     TelMeService Service { get; } = service;
     ILogger<Worker> Logger { get; } = logger;
     Action<ILogger, string, Exception?> LogMessage { get; } = LoggerMessage.Define<string>(LogLevel.Information, 0, "{Message}");

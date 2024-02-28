@@ -1,6 +1,6 @@
 namespace TelMe;
 
-public readonly struct Result(bool success = false, string? message = null) {
-    public readonly bool Success { get; } = success;
-    public readonly string? Message { get; } = message;
+readonly record struct Result {
+    internal bool Success { get; init; }
+    internal string? Message { get; init; }
 }

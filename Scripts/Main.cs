@@ -8,7 +8,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Configuration;
 using Microsoft.Extensions.Logging.EventLog;
-using TelMe;
 
 async Task<bool> ParseArgs(string serviceName) {
     if (args.Length is not 1) return false;

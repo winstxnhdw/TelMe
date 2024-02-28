@@ -1,13 +1,11 @@
 using System.Text.Json;
 
-namespace TelMe;
-
-public partial class JSON {
+class JSON {
     static JsonSerializerOptions Options { get; } = new() {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase
     };
 
-    public static string Parse<T>(T payload, bool writeIndented = false) {
+    internal static string Parse<T>(T payload, bool writeIndented = false) {
         JSON.Options.WriteIndented = writeIndented;
         return JsonSerializer.Serialize(payload, JSON.Options);
     }
