@@ -13,14 +13,14 @@
       },
       "Microsoft.Extensions.Configuration.Ini": {
         "type": "Direct",
-        "requested": "[9.0.0, )",
-        "resolved": "9.0.0",
-        "contentHash": "dW2ctSsMt1Y3lMaIk3XY9P09SLbY0SVm6ttOGpwAFKklSeYV3MbNa53aJ2Ox4noAMDWyDXCRmFyhL4BNqnq3ag==",
+        "requested": "[9.0.1, )",
+        "resolved": "9.0.1",
+        "contentHash": "JTLbhpmGKJlWbrm1zLY4tvkF3NCyb5ZxUFgez8CD96GsahF76ZfB1sLHzhtc77W9bnMmYpu7NvRpXA7gOLHc/Q==",
         "dependencies": {
-          "Microsoft.Extensions.Configuration": "9.0.0",
-          "Microsoft.Extensions.Configuration.Abstractions": "9.0.0",
-          "Microsoft.Extensions.Configuration.FileExtensions": "9.0.0",
-          "Microsoft.Extensions.FileProviders.Abstractions": "9.0.0"
+          "Microsoft.Extensions.Configuration": "9.0.1",
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.1",
+          "Microsoft.Extensions.Configuration.FileExtensions": "9.0.1",
+          "Microsoft.Extensions.FileProviders.Abstractions": "9.0.1"
         }
       },
       "Microsoft.Extensions.Hosting": {
