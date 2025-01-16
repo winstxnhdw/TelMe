@@ -55,13 +55,13 @@
       },
       "Microsoft.Extensions.Hosting.WindowsServices": {
         "type": "Direct",
-        "requested": "[9.0.0, )",
-        "resolved": "9.0.0",
-        "contentHash": "OQ7aTejEpkj1OPibhvKYhygUSoKQ+O5YYuBmJxOCC3+F5v7d4szYfvOGd8aegK8/ARFTJqpeXZq1wyIwEza6lg==",
+        "requested": "[9.0.1, )",
+        "resolved": "9.0.1",
+        "contentHash": "FLapgOXQzPjUsbMqjjagCFCiGjroRmrmHQVK3/PEovRIvDU6nLk7KKs4PalzEHaIfqG+PySlY/BeLTyZtjcshg==",
         "dependencies": {
-          "Microsoft.Extensions.Hosting": "9.0.0",
-          "Microsoft.Extensions.Logging.EventLog": "9.0.0",
-          "System.ServiceProcess.ServiceController": "9.0.0"
+          "Microsoft.Extensions.Hosting": "9.0.1",
+          "Microsoft.Extensions.Logging.EventLog": "9.0.1",
+          "System.ServiceProcess.ServiceController": "9.0.1"
         }
       },
       "Microsoft.NET.ILLink.Tasks": {
@@ -360,10 +360,10 @@
       },
       "System.ServiceProcess.ServiceController": {
         "type": "Transitive",
-        "resolved": "9.0.0",
-        "contentHash": "ciFstNZEWYf40HbwzdQLdgQpgpnjkleC1z0jMqBKRdkEQqQ6I/Aht0x9fTBODnaQTtcF+scvrdimoDbfNap/aQ==",
+        "resolved": "9.0.1",
+        "contentHash": "Ghm4yP29P3cC65Qof8CrgU3WO/q3ERtht6/CrvcUl1FgRs6D7exj75GuG4ciRv0sjygtvyd675924DFsxxnEgA==",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.0"
+          "System.Diagnostics.EventLog": "9.0.1"
         }
       },
       "System.Text.Encodings.Web": {
@@ -397,10 +397,10 @@
       },
       "System.ServiceProcess.ServiceController": {
         "type": "Transitive",
-        "resolved": "9.0.0",
-        "contentHash": "ciFstNZEWYf40HbwzdQLdgQpgpnjkleC1z0jMqBKRdkEQqQ6I/Aht0x9fTBODnaQTtcF+scvrdimoDbfNap/aQ==",
+        "resolved": "9.0.1",
+        "contentHash": "Ghm4yP29P3cC65Qof8CrgU3WO/q3ERtht6/CrvcUl1FgRs6D7exj75GuG4ciRv0sjygtvyd675924DFsxxnEgA==",
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.0"
+          "System.Diagnostics.EventLog": "9.0.1"
         }
       },
       "System.Text.Encodings.Web": {
