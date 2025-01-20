@@ -4,12 +4,9 @@
     "net8.0-windows7.0": {
       "CliWrap": {
         "type": "Direct",
-        "requested": "[3.7.0, )",
-        "resolved": "3.7.0",
-        "contentHash": "2RgU3zmQDAD4S8Aq4igWRF31VzzH/zE6kdecLfeozoPZlibahBs9AGSqrk8B6U13K2A65dFRLg/0tNBtBaOH/A==",
-        "dependencies": {
-          "System.Management": "9.0.0"
-        }
+        "requested": "[3.7.1, )",
+        "resolved": "3.7.1",
+        "contentHash": "2f5L/wjalAisJ9NEu9o5liobQQji47evLOYLf2kk1y/MGLmTZWDfGR0d8C5lNuJtUiHCZzBoTfJbizQHZ2rFaw=="
       },
       "Microsoft.Extensions.Configuration.Ini": {
         "type": "Direct",
@@ -330,11 +327,6 @@
         "resolved": "9.0.1",
         "contentHash": "bHtTesA4lrSGD1ZUaMIx6frU3wyy0vYtTa/hM6gGQu5QNrydObv8T5COiGUWsisflAfmsaFOe9Xvw5NSO99z0g=="
       },
-      "System.CodeDom": {
-        "type": "Transitive",
-        "resolved": "9.0.0",
-        "contentHash": "oTE5IfuMoET8yaZP/vdvy9xO47guAv/rOhe4DODuFBN3ySprcQOlXqO3j+e/H/YpKKR5sglrxRaZ2HYOhNJrqA=="
-      },
       "System.Diagnostics.DiagnosticSource": {
         "type": "Transitive",
         "resolved": "9.0.1",
@@ -349,14 +341,6 @@
         "type": "Transitive",
         "resolved": "9.0.1",
         "contentHash": "uXf5o8eV/gtzDQY4lGROLFMWQvcViKcF8o4Q6KpIOjloAQXrnscQSu6gTxYJMHuNJnh7szIF9AzkaEq+zDLoEg=="
-      },
-      "System.Management": {
-        "type": "Transitive",
-        "resolved": "9.0.0",
-        "contentHash": "bVh4xAMI5grY5GZoklKcMBLirhC8Lqzp63Ft3zXJacwGAlLyFdF4k0qz4pnKIlO6HyL2Z4zqmHm9UkzEo6FFsA==",
-        "dependencies": {
-          "System.CodeDom": "9.0.0"
-        }
       },
       "System.ServiceProcess.ServiceController": {
         "type": "Transitive",
@@ -386,14 +370,6 @@
         "type": "Transitive",
         "resolved": "9.0.1",
         "contentHash": "iVnDpgYJsRaRFnk77kcLA3+913WfWDtnAKrQl9tQ5ahqKANTaJKmQdsuPWWiAPWE9pk1Kj4Pg9JGXWfFYYyakQ=="
-      },
-      "System.Management": {
-        "type": "Transitive",
-        "resolved": "9.0.0",
-        "contentHash": "bVh4xAMI5grY5GZoklKcMBLirhC8Lqzp63Ft3zXJacwGAlLyFdF4k0qz4pnKIlO6HyL2Z4zqmHm9UkzEo6FFsA==",
-        "dependencies": {
-          "System.CodeDom": "9.0.0"
-        }
       },
       "System.ServiceProcess.ServiceController": {
         "type": "Transitive",
