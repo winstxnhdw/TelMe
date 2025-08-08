@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 
-class Config {
+sealed class Config {
     IConfigurationRoot ConfigRoot { get; } = Config.Load();
 
     internal T? GetValue<T>(string key) => this.ConfigRoot.GetValue<T>($"User:{key}");

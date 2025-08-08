@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TelMe;
 
-class Worker(TelMeService service, ILogger<Worker> logger) : BackgroundService {
+sealed class Worker(TelMeService service, ILogger<Worker> logger) : BackgroundService {
     TelMeService Service { get; } = service;
     ILogger<Worker> Logger { get; } = logger;
     Action<ILogger, string, Exception?> LogMessage { get; } = LoggerMessage.Define<string>(LogLevel.Information, 0, "{Message}");

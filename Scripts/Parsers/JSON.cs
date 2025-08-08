@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-class JSON {
+sealed class JSON {
     static JsonSerializerOptions Options { get; } = new() {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase
     };
