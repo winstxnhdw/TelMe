@@ -30,8 +30,8 @@
 
     <PackageReference Include="CliWrap" Version="3.7.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="10.0.12" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="10.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.14" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="10.0.14" />
     <PackageReference Include="Tools.InnoSetup" Version="7.1.0" />
 
   </ItemGroup>
